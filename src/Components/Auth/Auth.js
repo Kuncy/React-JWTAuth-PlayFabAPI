@@ -53,7 +53,7 @@ export class Auth extends Component {
                     return Axios.post('/Client/GetAccountInfo',{
                         }, {
                             header:{
-                                'X-Authorization': localStorage.getItem("token")
+                            
                             }
                         }
                         )
@@ -84,7 +84,7 @@ export class Auth extends Component {
             this.setState(pre => ({
                 isloading: true
             }))
-            Axios.post('/user/signup', this.state.user).then(response => {
+            Axios.post('/Client/RegisterPlayFabUser', this.state.user).then(response => {
                 this.setState(pre => ({
                     isloading: false
                 }))
