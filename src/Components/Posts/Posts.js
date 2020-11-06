@@ -61,11 +61,11 @@ export class Posts extends Component {
         return (
             <div>
                 
-                <div className="col-lg-12">
+                
                 <div className="carousel">
                     <CarouselComponent />
                     </div>
-                </div>
+                
                 <div className="container hero">
                     <div className="row align-items-center text-center text-md-left">
                         <div className="col-lg-4">

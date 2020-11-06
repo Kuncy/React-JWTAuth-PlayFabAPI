@@ -8,34 +8,13 @@
 
   .carousel{
     height: 100%;
-
-    background-color:black;
   }
   @media (max-width: 600px){
     .carousel{
       height: 300px;
     }
-    .section{
-      top: 100px;
-    }
   }
 
-  .section{
-    position: relative;
-    background-color: #022855;
-    height: 800px;
-    z-index: 8;
-    color: white;
-
-  }
-  .section2{
-
-    position: relative;
-    height:800px;
-    background-color:red;
-    z-index: 9;
-    text-align: center;
-  }
   .carousel .control-dots {
     position: absolute;
     bottom: 0;
@@ -64,7 +43,7 @@
       display: inline-block;
       border-radius: 0% !important;
       outline: none;
-      margin: 2px;
+      margin: 0px;
       }
       .carousel .control-dots .dot.selected, .carousel .control-dots .dot:hover {
         opacity: 1;
