@@ -1,0 +1,71 @@
+*{
+    box-sizing: border-box;
+  }
+
+  img{
+    width: 100%;
+  }
+
+  .carousel{
+    height: 100%;
+
+    background-color:black;
+  }
+  @media (max-width: 600px){
+    .carousel{
+      top: 50px;
+    }
+    .section{
+      top: 100px;
+    }
+  }
+
+  .section{
+    position: relative;
+    background-color: #022855;
+    height: 800px;
+    z-index: 8;
+    color: white;
+
+  }
+  .section2{
+
+    position: relative;
+    height:800px;
+    background-color:red;
+    z-index: 9;
+    text-align: center;
+  }
+  .carousel .control-dots {
+    position: absolute;
+    bottom: 0;
+    margin: 0 0;
+    padding: 0;
+    text-align: center;
+    width: 100%; 
+  }
+    @media (min-width: 960px) {
+      .carousel .control-dots {
+        bottom: 0;
+      } 
+      }
+    .carousel .control-dots .dot {
+      -webkit-transition: opacity 0.25s ease-in;
+      -moz-transition: opacity 0.25s ease-in;
+      -ms-transition: opacity 0.25s ease-in;
+      -o-transition: opacity 0.25s ease-in;
+      transition: opacity 0.25s ease-in;
+      opacity: 0.3;
+      filter: alpha(opacity=30);
+      background: #fff;
+      width:5%;
+      height: 5px;
+      cursor: pointer;
+      display: inline-block;
+      border-radius: 0% !important;
+      outline: none;
+      margin: 2px;
+      }
+      .carousel .control-dots .dot.selected, .carousel .control-dots .dot:hover {
+        opacity: 1;
+        filter: alpha(opacity=100); }

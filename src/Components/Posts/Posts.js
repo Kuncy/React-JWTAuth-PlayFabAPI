@@ -4,6 +4,9 @@ import ShowPost from './ShowPost/ShowPost'
 import img1 from '../../assets/asset-1.png'
 import ShowUser from '../Users/ShowUsers/ShowUser'
 import Spinner from '../../Containers/Spinner/Spinner'
+import 'react-responsive-carousel/lib/styles/carousel.min.css'
+import CarouselComponent from '../../Containers/carousel/carousel'
+import './Posts.css'
 
 export class Posts extends Component {
     constructor(props) {
@@ -57,15 +60,17 @@ export class Posts extends Component {
         }
         return (
             <div>
-
+                <div className="carousel">
+                    <CarouselComponent />
+                </div>
                 <div className="container hero">
                     <div className="row align-items-center text-center text-md-left">
                         <div className="col-lg-4">
                             <h1 className="mb-3 display-3">
-                                Tell Your Story to the World
+                                Welcome to hivemind
                     </h1>
                             <p>
-                                Join with us! Login or Register. Write your story and share !!
+                                Join with us! Login or Register.
                     </p>
                         </div>
                         <div className="col-lg-8">
@@ -83,11 +88,7 @@ export class Posts extends Component {
                             </div>
                         </div>
 
-                        <div className="col-md-4 col-xs-12 pl-4">
-                            <h3 className="mb-4"> Popular Writers</h3>
-                            <hr></hr>
-                            {allUsers}
-                        </div>
+                        
                     </div>
                 </div>
 

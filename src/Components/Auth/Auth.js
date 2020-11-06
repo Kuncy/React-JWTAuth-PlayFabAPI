@@ -60,7 +60,9 @@ export class Auth extends Component {
                         
                 })
                 .then(data => {
+                    console.log(data)
                     let profile = data.data.profile.username
+
                     localStorage.setItem(
                         'profileData',
                         JSON.stringify({
