@@ -57,18 +57,17 @@ export class Auth extends Component {
                     }))
                     this.props.history.push('/')
                     auth.login(response.data.data.PlayFabId,response.data.data.SessionTicket)
-                    console.log(response.data.data.SessionTicket)
 
                     return Axios.post('/Client/GetAccountInfo', {
                         PlayFabId: "9FF10EDD6824D0C7"
                     }, options);
                 }).then(response => {
-                    console.log(response)
-
+                    console.log(response.data.data.AccountInfo.Username)
+                    let profile = response.data.data.AccountInfo.Username
                     localStorage.setItem(
                         'profileData',
                         JSON.stringify({
-
+                            "username": profile
                         }))
 
 
