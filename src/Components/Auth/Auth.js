@@ -6,6 +6,12 @@ import validEmailRegex from '../../utils/emailRegex'
 import './Auth.css'
 import { AuthContext } from '../../context/auth-context'
 import Spinner from '../../Containers/Spinner/Spinner';
+import { data } from 'jquery';
+
+const options = {
+    headers: {'X-Authorization':'9FF10EDD6824D0C7--E5F11EE018D47F38-C1533-8D8855E5D3FBFFD-2coKYGBFyGDypkbSfHupis2WjZAd+Omg4m5sh/T0AIs='}
+};
+
 export class Auth extends Component {
     static contextType = AuthContext
     constructor(props) {
@@ -32,6 +38,7 @@ export class Auth extends Component {
     }
 
 
+
     mySubmitHandler = (event) => {
         this.setState(pre => ({
             isloading: true
@@ -50,23 +57,18 @@ export class Auth extends Component {
                     }))
                     this.props.history.push('/')
                     auth.login(response.data.data.PlayFabId,response.data.data.SessionTicket)
-                    return Axios.post('/Client/GetAccountInfo',{
-                        }, {
-                            header:{
-                            
-                            }
-                        }
-                        )
-                        
-                })
-                .then(data => {
-                    console.log(data)
-                    let profile = data.data.profile.username
+                    console.log(response.data.data.SessionTicket)
+
+                    return Axios.post('/Client/GetAccountInfo', {
+                        PlayFabId: "9FF10EDD6824D0C7"
+                    }, options);
+                }).then(response => {
+                    console.log(response)
 
                     localStorage.setItem(
                         'profileData',
                         JSON.stringify({
-                            "username": profile
+
                         }))
 
 
