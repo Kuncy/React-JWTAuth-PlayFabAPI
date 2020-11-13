@@ -6,7 +6,6 @@ import validEmailRegex from '../../utils/emailRegex'
 import './Auth.css'
 import { AuthContext } from '../../context/auth-context'
 import Spinner from '../../Containers/Spinner/Spinner';
-import { data } from 'jquery';
 
 const options = {
     headers: {'X-Authorization':'9FF10EDD6824D0C7--E5F11EE018D47F38-C1533-8D8855E5D3FBFFD-2coKYGBFyGDypkbSfHupis2WjZAd+Omg4m5sh/T0AIs='}
@@ -21,14 +20,15 @@ export class Auth extends Component {
             user: {
                 TitleId: "C1533",
                 username: '',
-                password: ''
+                password: '',
+                email: '',
             },
             error: {
                 message: '',
                 code: ''
             },
             isloading: false,
-            isLoginMode: true,
+            isLoginMode: false,
 
             errors: {
                 username: '',
@@ -49,41 +49,7 @@ export class Auth extends Component {
         if (validateForm(this.state.errors)) {
         } else {
         }
-        if (this.state.isLoginMode) {
-            Axios.post('https://C1533.playfabapi.com/Client/LoginWithPlayFab', this.state.user)
-                .then(response => {
-                    this.setState(pre => ({
-                        isloading: false
-                    }))
-                    this.props.history.push('/')
-                    auth.login(response.data.data.PlayFabId,response.data.data.SessionTicket)
-
-                    return Axios.post('/Client/GetAccountInfo', {
-                        PlayFabId: "9FF10EDD6824D0C7"
-                    }, options);
-                }).then(response => {
-                    console.log(response.data.data.AccountInfo.Username)
-                    let profile = response.data.data.AccountInfo.Username
-                    localStorage.setItem(
-                        'profileData',
-                        JSON.stringify({
-                            "username": profile
-                        }))
-
-
-                }).catch(e => {
-
-                    this.setState({
-                        isloading: false,
-                        error: {
-                            ...this.state.error, message: e.response.data.message,
-                            code: e.response.status
-                        }
-                    });
-                })
-
-        }
-        else {
+        if (this.state.isLoginMode === false) {
             this.setState(pre => ({
                 isloading: true
             }))
@@ -99,7 +65,8 @@ export class Auth extends Component {
         this.setState({
             user: { ...this.state.user, username: '', password: '' }
         });
-    }
+    }   
+    
 
 
     myChangeHandler = (event) => {
@@ -198,6 +165,23 @@ export class Auth extends Component {
                             type='password'
                             name='password'
                             value={this.state.user.password}
+                            className={"form-control " + (this.state.errors.password ? 'is-invalid' : '')}
+                            placeholder="Enter your Password"
+                            required="required"
+                            data-error="Please enter your full name."
+                            onChange={this.myChangeHandler}
+                        />
+                        {this.state.errors.password.length > 0 &&
+                            <div className="mt-1"> <span className='error text-danger'>{this.state.errors.password}</span></div>}
+
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="email">Email </label>
+                        <input
+                            type='email'
+                            name='email'
+                            value={this.state.user.email}
                             className={"form-control " + (this.state.errors.password ? 'is-invalid' : '')}
                             placeholder="Enter your Password"
                             required="required"

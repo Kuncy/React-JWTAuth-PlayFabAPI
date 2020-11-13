@@ -11,6 +11,7 @@ import {
 } from 'react-router-dom'
 import axios from 'axios';
 import Auth from './Components/Auth/Auth';
+import Reg from './Components/Auth/Reg';
 import MainNavigation from './Containers/Menubar/MainNavigation/MainNavigation';
 import Posts from './Components/Posts/Posts';
 import SinglePost from './Components/Posts/SinglePost/SinglePost';
@@ -127,8 +128,9 @@ const App = (props) => {
             <Switch>
               <Route path="/post/:id" exact component={SinglePost}></Route>
               <Route path="/public/:id" component={Profile} />
-              <Route path="/auth" component={Auth} exact />
+              <Route path="/login" component={Auth} exact />
               <Route path="/" component={Posts} exact />
+              <Route path="/register" component={Reg} exact />
               {route}
 
             </Switch>
