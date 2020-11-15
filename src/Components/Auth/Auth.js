@@ -174,7 +174,7 @@ export class Auth extends Component {
             {iserror}
 
             <div className="container container-short py-5">
-                <h1 className="pt-2 py-2">{this.state.isLoginMode ? 'Login ' : 'Sign Up'}</h1>
+                <h1 className="pt-2 py-2">{this.state.isLoginMode ? 'Sign In ' : 'Sign Up'}</h1>
                 <hr></hr>
                 <form onSubmit={this.mySubmitHandler} className="pt-4">
                     <div className="form-group">
@@ -217,7 +217,7 @@ export class Auth extends Component {
                             disabled={this.state.user.username && this.state.user.password
                                 && (validateForm(this.state.errors)) ? '' : 'disabled'}
                         >
-                            {this.state.isLoginMode ? 'Login' : 'Sign Up'}
+                            {this.state.isLoginMode ? 'Sign In' : 'Sign Up'}
                         </button>
                     </div>
                 </form>
