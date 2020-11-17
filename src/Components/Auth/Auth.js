@@ -59,9 +59,10 @@ export class Auth extends Component {
                     let sessionTicket = response.data.data.SessionTicket
                     localStorage.setItem(
                         'sessionTicket',
-                        JSON.stringify({
-                            "X-Authorization": sessionTicket
-                        }))
+                        JSON.stringify(
+                            sessionTicket
+                        )
+                        )
                     return Axios.post('/Client/GetAccountInfo', {
                         PlayFabId: response.data.data.PlayFabId
                     },{
@@ -70,15 +71,14 @@ export class Auth extends Component {
                     }}
                     );
                 }).then(response => {
-                    console.log(response.data.data.AccountInfo.Username)
-                    console.log(response.data.data.SessionTicket)
-                    let profile = response.data.data.AccountInfo.Username
+                    console.log(response.data.data.AccountInfo.PlayFabId)
+                    let profile = response.data.data.AccountInfo.PlayFabId
                     
                     localStorage.setItem(
-                        'profileData',
-                        JSON.stringify({
-                            "username": profile,
-                        }))
+                        'PlayFabId',
+                        JSON.stringify(
+                            profile
+                        ))
 
 
                 }).catch(e => {

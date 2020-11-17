@@ -26,11 +26,20 @@ export class Profile extends Component {
         this.setState(pre => ({
             isloading: true
         }))
-        const storedData = JSON.parse(localStorage.getItem('profileData'));
-
+        const PlayFabId = JSON.parse(localStorage.getItem('PlayFabId'));
+        const sessionTicket= JSON.parse(localStorage.getItem('sessionTicket'));
+        console.log(sessionTicket);
+        console.log(PlayFabId);
         if (id) {
-            Axios.get('https://titleId.playfabapi.com/Client/GetPlayerProfile').then(data => {
-                this.setState({ ...this.state.user, user: data.data.profile, isloading: false });
+            Axios.post('https://C1533.playfabapi.com/Client/GetPlayerProfile', {
+                PlayFabId
+            },{
+                headers:{
+                    sessionTicket
+                }
+            })
+            .then(response => {
+                this.setState({ ...this.state.user, user: response.data.data.Username, isloading: false });
             }).catch(e => {
                 this.setState({
                     isloading: false,
@@ -44,9 +53,17 @@ export class Profile extends Component {
         }
         else {
             let id
-            Axios.post('/Client/GetAccountInfo').then(data => {
-                id = data.data.profile.username
-                this.setState({ ...this.state.user, user: data.data.profile, isloading: false });
+            Axios.post('/Client/GetAccountInfo', {
+                PlayFabId: PlayFabId
+            }, {
+                headers:{
+                    "X-Authorization": sessionTicket
+                }
+            })
+            .then(response => {
+                console.log(response)
+                id = response.data.data.AccountInfo.PlayFabId
+                this.setState({ ...this.state.user, user: response.data.data.Username, isloading: false });
             }).catch(e => {
                 this.setState({
                     isloading: false,
@@ -62,7 +79,7 @@ export class Profile extends Component {
     }
 
     render() {
-        const storedData = JSON.parse(localStorage.getItem('profileData'));
+        const storedData = JSON.parse(localStorage.getItem('PlayFabId'));
         let path = this.props.match.path
         let isLoading
         let iserror
