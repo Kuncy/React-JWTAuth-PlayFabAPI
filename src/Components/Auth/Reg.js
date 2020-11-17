@@ -8,7 +8,7 @@ import { AuthContext } from '../../context/auth-context'
 import Spinner from '../../Containers/Spinner/Spinner';
 
 const options = {
-    headers: {'X-Authorization':'9FF10EDD6824D0C7--E5F11EE018D47F38-C1533-8D8855E5D3FBFFD-2coKYGBFyGDypkbSfHupis2WjZAd+Omg4m5sh/T0AIs='}
+    headers: localStorage.getItem("userData.token")
 };
 
 export class Auth extends Component {

@@ -29,11 +29,8 @@ export class Profile extends Component {
         const storedData = JSON.parse(localStorage.getItem('profileData'));
 
         if (id) {
-            Axios.get('/profile/' + id).then(data => {
+            Axios.get('https://titleId.playfabapi.com/Client/GetPlayerProfile').then(data => {
                 this.setState({ ...this.state.user, user: data.data.profile, isloading: false });
-                return Axios.get('/profile/' + id + '/mypost')
-            }).then(data => {
-                this.setState({ ...this.state.posts, posts: data.data.post, isloading: false });
             }).catch(e => {
                 this.setState({
                     isloading: false,
