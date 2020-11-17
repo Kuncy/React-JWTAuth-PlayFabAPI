@@ -58,13 +58,13 @@ export class Auth extends Component {
                     auth.login(response.data.data.PlayFabId,response.data.data.SessionTicket)
                     let sessionTicket = response.data.data.SessionTicket
                     localStorage.setItem(
-                        'headers',
+                        'sessionTicket',
                         JSON.stringify({
                             "X-Authorization": sessionTicket
                         }))
                     return Axios.post('/Client/GetAccountInfo', {
                         PlayFabId: response.data.data.PlayFabId
-                    }, {
+                    },{
                         headers:{
                             "X-Authorization": sessionTicket
                     }}

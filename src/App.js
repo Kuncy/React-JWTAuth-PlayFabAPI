@@ -60,7 +60,7 @@ const App = (props) => {
     setUserId(null);
     localStorage.removeItem('userData');
     localStorage.removeItem('profileData');
-    localStorage.removeItem('headers');
+    localStorage.removeItem('sessionTicket');
     let token = null
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
