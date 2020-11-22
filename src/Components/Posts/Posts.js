@@ -1,7 +1,6 @@
 import Axios from 'axios'
 import React, { Component } from 'react'
 import ShowPost from './ShowPost/ShowPost'
-import img1 from '../../assets/asset-1.png'
 import ShowUser from '../Users/ShowUsers/ShowUser'
 import Spinner from '../../Containers/Spinner/Spinner'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
@@ -59,16 +58,14 @@ export class Posts extends Component {
             ))
         }
         return (
-            <div>
-                
-                
+            <div className="posts">
                 <div className="carousel">
                     <CarouselComponent />
                     </div>
                 
                 <div className="container hero">
                     <div className="row align-items-center text-center text-md-left">
-                        <div className="col-lg-4">
+                        <div className="col-lg-12">
                             <h1 className="mb-3 display-3">
                                 Welcome to hivemind
                     </h1>
@@ -77,27 +74,10 @@ export class Posts extends Component {
                     </p>
                         </div>
                         <div className="col-lg-8">
-                            <img src={img1} className="img-fluid" alt="img" />
+                            <img  className="img-fluid" alt="img" />
                         </div>
                     </div>
-
-
-                </div>
-                <div className="container hero py-5">
-                    <div className="row">
-                        <div className="col-md-8 col-xs-12">
-                            <div className="row">
-                                {fetchedposts}
-                            </div>
-                        </div>
-
-                        
-                    </div>
-                </div>
-
-                <div className="container loading">
-                    {isLoading}
-                </div>
+                </div>       
             </div>
         )
     }

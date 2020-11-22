@@ -8,7 +8,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
   }
+
   
   .nav-links li {
     margin: 1rem;

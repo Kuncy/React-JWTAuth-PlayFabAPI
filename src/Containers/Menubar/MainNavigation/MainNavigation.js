@@ -5,7 +5,7 @@ import MainHeader from '../Mainheader/Mainheader'
 import NavLinks from '../Navlinks/NavLinks'
 import SideDrawer from '../SideDrawer/SideDrawer';
 import './MainNavigation.css';
-import img from '../../../assets/asset-1.png'
+
 import SocialMediaHorizontal from '../../SocialMedia.js/SocialMediaHorizontal/SocialMediaHorizontal';
 const MainNavigation = props => {
   let attachedClasses = ['SideDrawer', 'Close'];
@@ -33,12 +33,11 @@ const MainNavigation = props => {
             <h3 className="text-left mt-2 pl-4">hivemind</h3>
             <hr />
             <nav className="main-navigation__drawer-nav" >
-              <img src={img} alt="logo" />
+            <NavLinks />
+              <img src="." alt="logo" />
               <div className="mobile">
                 <SocialMediaHorizontal />
               </div>
-              <NavLinks />
-
             </nav>
           </SideDrawer>
         )}

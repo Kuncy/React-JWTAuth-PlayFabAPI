@@ -10,12 +10,15 @@ const NavLinks = props => {
   function onLgout() {
     console.log(history)
     auth.logout()
-    history.push('/auth')
+    history.push('/')
 
   }
   return <ul className="nav-links">
     <li>
       <NavLink to="/" exact>Home</NavLink>
+    </li>
+    <li>
+      <NavLink to="/news" exact>News</NavLink>
     </li>
     {auth.isLoggedIn && (<> <li>
       <NavLink to="/profile">Profile</NavLink>
@@ -35,7 +38,7 @@ const NavLinks = props => {
       </li>
     )}
     {!auth.isLoggedIn && (
-      <li>
+      <li className="SignUp">
         <NavLink to="/register">Sign Up!</NavLink>
       </li>
     )}
