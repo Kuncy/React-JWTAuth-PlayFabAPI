@@ -139,6 +139,7 @@ export const News = React.memo(function SolidGameCard() {
                         Recent News
                     </h3>
                 </div>
+                
             </div>
         </div> 
      </div>
