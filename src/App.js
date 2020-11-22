@@ -12,6 +12,7 @@ import {
 import axios from 'axios';
 import Auth from './Components/Auth/Auth';
 import Reg from './Components/Auth/Reg';
+import News from './Components/News/News';
 import MainNavigation from './Containers/Menubar/MainNavigation/MainNavigation';
 import Posts from './Components/Posts/Posts';
 import SinglePost from './Components/Posts/SinglePost/SinglePost';
@@ -132,6 +133,7 @@ const App = (props) => {
               <Route path="/login" component={Auth} exact />
               <Route path="/" component={Posts} exact />
               <Route path="/register" component={Reg} exact />
+              <Route path="/news" component={News} exact />
               {route}
 
             </Switch>
