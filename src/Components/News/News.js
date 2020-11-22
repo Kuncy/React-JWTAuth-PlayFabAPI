@@ -90,7 +90,7 @@ export const News = React.memo(function SolidGameCard() {
       <div>
         <div className="news">
         <>
-        <Grid classes={gridStyles} container spacing={10} wrap={'wrap'}>
+        <Grid classes={gridStyles} container justify={'center'} spacing={10} wrap={'wrap'}>
             <Grid item>
             <CustomCard
                 classes={styles}
