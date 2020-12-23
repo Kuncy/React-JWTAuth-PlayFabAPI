@@ -20,7 +20,6 @@ export class Profile extends Component {
     }
 
     componentDidMount() {
-        let path = this.props.match.path
         let id = this.props.match.params.id
 
         this.setState(pre => ({
@@ -28,7 +27,7 @@ export class Profile extends Component {
         }))
         const PlayFabId = JSON.parse(localStorage.getItem('PlayFabId'));
         const sessionTicket= JSON.parse(localStorage.getItem('sessionTicket'));
-        console.log(sessionTicket);
+        console.log();
         console.log(PlayFabId);
         if (id) {
             Axios.post('https://C1533.playfabapi.com/Client/GetPlayerProfile', {
@@ -39,7 +38,7 @@ export class Profile extends Component {
                 }
             })
             .then(response => {
-                this.setState({ ...this.state.user, user: response.data.data.Username, isloading: false });
+                this.setState({ ...this.state.user, user: response.data.data.AccountInfo.Username, isloading: false });
             }).catch(e => {
                 this.setState({
                     isloading: false,
@@ -52,7 +51,6 @@ export class Profile extends Component {
             })
         }
         else {
-            let id
             Axios.post('/Client/GetAccountInfo', {
                 PlayFabId: PlayFabId
             }, {
@@ -62,8 +60,10 @@ export class Profile extends Component {
             })
             .then(response => {
                 console.log(response)
-                id = response.data.data.AccountInfo.PlayFabId
-                this.setState({ ...this.state.user, user: response.data.data.Username, isloading: false });
+                this.setState({ ...this.state.user, Username: response.data.data.AccountInfo.Username, Email: response.data.data.AccountInfo.PrivateInfo.Email, PlayFabId: response.data.data.AccountInfo.PlayFabId, isloading: false });
+                console.log(this.state.Username);
+                console.log(this.state.Email);
+                console.log(this.state.PlayFabId);
             }).catch(e => {
                 this.setState({
                     isloading: false,
@@ -110,14 +110,6 @@ export class Profile extends Component {
             )
         }
 
-        let fetchedposts
-        if (this.state.posts) {
-            fetchedposts = this.state.posts.map((post, index) => (
-                <ShowPost key={index} {...post} {...index} />
-            ))
-        }
-        let profile = this.state.user
-
         return (
             <>
                 {isLoading}
@@ -125,28 +117,22 @@ export class Profile extends Component {
                 <div className="container py-5 container-short">
                     <div className="row profile">
                         <div className="col-md-8 col-xs-12 order-2 order-lg-1">
-                            <h2 className="text-black font-weight-light mb-4">{profile.username}</h2>
-                            {(!storedData && path !== "/profile") ? null : <Link to={"/profile/edit/" + profile._id}  >Edit Profile</Link>}
-                            <p>{profile.bio}</p>
+                            <h2 className="text-black font-weight-light mb-4">{this.state.Username}</h2>
+                            <br></br>
+                            <h2 className="text-black font-weight-light mb-4">{this.state.Email}</h2>
+                            {(!storedData && path !== "/profile") ? null : <Link to={"/profile/edit/" + JSON.parse(localStorage.getItem('PlayFabId'))}  >Edit Profile</Link>}
+                            <p>{}</p>
                         </div>
 
                         <div className="col-md-4 col-xs-12 order-1 order-lg-2">
                             <img className="img-fluid w-50 rounded-circle mb-3"
-                                src={profile.imagePath} alt={profile.username}></img>
+                                 alt={this.state.username}></img>
                         </div>
                     </div>
 
                 </div>
 
-                <div className="container py-5 container-short">
-                    <h2 className="font-weight-light text-black">{profile.username}'s Posts</h2>
-                    <hr />
-                    {this.state.posts.length === 0 ? <h2 className="mt-5 text-center">No Posts Found</h2> : null}
-                    <div className="row">
-                        {fetchedposts}
-                    </div>
 
-                </div>
             </>
         )
     }

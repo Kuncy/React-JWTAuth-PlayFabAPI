@@ -9,14 +9,7 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.css';
 
 import 'jquery/dist/jquery.js';
-setInterval(async () => {
-  axios.get("http://zany-periodic-fisherman.glitch.me/test").then(data=>{
-  console.log(data)
-})
-.catch(e=>{
-  console.log(e.response)
-})
-},60 * 1000)
+
 
 
 //axios.defaults.baseURL = 'http://localhost:3001/api';
