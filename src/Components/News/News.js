@@ -26,8 +26,16 @@ const useStyles = makeStyles(() => ({
   actionArea: {
     borderRadius: 16,
     transition: '0.2s',
+    outline: 'none',
     '&:hover': {
       transform: 'scale(1.1)',
+      outline: 'none',
+    },
+    '&:active': {
+      outline: 'none',
+    },
+    '&:visited:after': {
+      outline: 'none',
     },
   },
   card: ({ color }) => ({
