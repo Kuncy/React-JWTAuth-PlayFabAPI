@@ -2,7 +2,6 @@ import Axios from 'axios'
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Spinner from '../../../Containers/Spinner/Spinner'
-import ShowPost from '../../Posts/ShowPost/ShowPost'
 import './Profile.css'
 export class Profile extends Component {
     constructor(props) {

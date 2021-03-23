@@ -1,7 +1,5 @@
 import Axios from 'axios'
 import React, { Component } from 'react'
-import ShowPost from './ShowPost/ShowPost'
-import ShowUser from '../Users/ShowUsers/ShowUser'
 import Spinner from '../../Containers/Spinner/Spinner'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import CarouselComponent from '../../Containers/carousel/carousel'
@@ -47,16 +45,6 @@ export class Posts extends Component {
         }
         let fetchedposts
         let allUsers
-        if (this.state.posts) {
-            fetchedposts = this.state.posts.map((post, index) => (
-                <ShowPost key={index} {...post} {...index} />
-            ))
-        }
-        if (this.state.users) {
-            allUsers = this.state.users.map((user, index) => (
-                <ShowUser key={index} {...user} {...index} />
-            ))
-        }
         return (
             <div className="posts">
                 <div className="carousel">

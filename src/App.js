@@ -15,12 +15,8 @@ import Reg from './Components/Auth/Reg';
 import News from './Components/News/News';
 import MainNavigation from './Containers/Menubar/MainNavigation/MainNavigation';
 import Posts from './Components/Posts/Posts';
-import SinglePost from './Components/Posts/SinglePost/SinglePost';
 import { AuthContext } from './context/auth-context'
-import CreatePost from './Components/Posts/CreatePost/CreatePost';
 import Profile from './Components/Users/Profile/Profile';
-import Mypost from './Components/Posts/Mypost/Mypost';
-import CreateProfile from './Components/Users/CreateProfile/CreateProfile'
 
 import Spinner from './Containers/Spinner/Spinner';
 import Footer from './Containers/footer/footer'
@@ -101,13 +97,7 @@ const App = (props) => {
   }
   else {
     route = (<>
-      {token ? <Route path="/create" exact component={CreatePost}></Route> : <Redirect to="/auth" />}
-      {token ? <Route path="/createProfile" exact component={CreateProfile}></Route> : <Redirect to="/auth" />}
-      {token ? <Route path="/edit/:id" exact component={CreatePost}></Route> : <Redirect to="/auth" />}
-      {token ? <Route path="/mypost" exact component={Mypost}></Route> : <Redirect to="/auth" />}
-      {token ? <Route path="/mypost/:id" exact component={SinglePost}></Route> : <Redirect to="/auth" />}
       {token ? <Route path="/profile" exact component={Profile} /> : <Redirect to="/auth" />}
-      {token ? <Route path="/profile/edit/:id" component={CreateProfile} /> : <Redirect to="/auth" />}
 
     </>
     )
@@ -128,7 +118,6 @@ const App = (props) => {
           <Router>
             <MainNavigation />
             <Switch>
-              <Route path="/post/:id" exact component={SinglePost}></Route>
               <Route path="/public/:id" component={Profile} />
               <Route path="/login" component={Auth} exact />
               <Route path="/" component={Posts} exact />
